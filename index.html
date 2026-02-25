@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Site de M./Mme … — Enseignant·e</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="wrap">
+<h1>Nom Prénom</h1>
+<p class="subtitle">Enseignant·e — École / Ville</p>
+<nav class="nav">
+<a href="index.html" aria-current="page">Accueil</a>
+<a href="cours.html">Cours</a>
+<a href="ressources.html">Ressources</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<main class="wrap grid">
+<section class="card">
+<h2>Bienvenue</h2>
+<p>
+Ici tu trouveras les documents de cours, les consignes, les liens utiles et les dates importantes.
+</p>
+<ul class="list">
+<li>📌 Infos de cours mises à jour chaque semaine</li>
+<li>📄 PDF / exercices / corrigés</li>
+<li>🔗 Liens vers outils et ressources</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Annonces</h2>
+<div class="note">
+<strong>Dernière mise à jour :</strong> <span id="lastUpdate"></span><br/>
+<strong>Cette semaine :</strong> exercice “Histogrammes” + devoir pour vendredi.
+</div>
+<p class="muted">Astuce : édite ce bloc pour poster tes annonces.</p>
+</section>
+
+<section class="card">
+<h2>Accès rapide</h2>
+<div class="buttons">
+<a class="btn" href="cours.html">Voir les cours</a>
+<a class="btn" href="ressources.html">Ressources</a>
+<a class="btn" href="contact.html">Me contacter</a>
+</div>
+</section>
+</main>
+
+<footer class="wrap footer">
+<p>© <span id="year"></span> Nom Prénom — Site pédagogique</p>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("lastUpdate").textContent = new Date().toLocaleDateString("fr-BE");
+</script>
+</body>
+</html>
