@@ -1,62 +1,134 @@
 <!doctype html>
 <html lang="fr">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Site de M./Mme … — Enseignant·e</title>
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<header class="wrap">
-<h1>Nom Prénom</h1>
-<p class="subtitle">Enseignant·e — École / Ville</p>
-<nav class="nav">
-<a href="index.html" aria-current="page">Accueil</a>
-<a href="cours.html">Cours</a>
-<a href="ressources.html">Ressources</a>
-<a href="contact.html">Contact</a>
-</nav>
-</header>
-
-<main class="wrap grid">
-<section class="card">
-<h2>Bienvenue</h2>
-<p>
-Ici tu trouveras les documents de cours, les consignes, les liens utiles et les dates importantes.
-</p>
-<ul class="list">
-<li>📌 Infos de cours mises à jour chaque semaine</li>
-<li>📄 PDF / exercices / corrigés</li>
-<li>🔗 Liens vers outils et ressources</li>
-</ul>
-</section>
-
-<section class="card">
-<h2>Annonces</h2>
-<div class="note">
-<strong>Dernière mise à jour :</strong> <span id="lastUpdate"></span><br/>
-<strong>Cette semaine :</strong> exercice “Histogrammes” + devoir pour vendredi.
-</div>
-<p class="muted">Astuce : édite ce bloc pour poster tes annonces.</p>
-</section>
-
-<section class="card">
-<h2>Accès rapide</h2>
-<div class="buttons">
-<a class="btn" href="cours.html">Voir les cours</a>
-<a class="btn" href="ressources.html">Ressources</a>
-<a class="btn" href="contact.html">Me contacter</a>
-</div>
-</section>
-</main>
-
-<footer class="wrap footer">
-<p>© <span id="year"></span> Nom Prénom — Site pédagogique</p>
-</footer>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("lastUpdate").textContent = new Date().toLocaleDateString("fr-BE");
-</script>
-</body>
-</html>
+	<head>
+		<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<title>John Nève — Cours INRACI & St-Luc</title>
+				<link rel="stylesheet" href="style.css" />
+				</head>
+				<body>
+					<div class="topbar">
+						<div class="wrap topbar-inner">
+							<span class="badge">Annonce</span>
+							<span>Prochaine séance / rendu : <strong>à compléter</strong></span>
+							<a class="topbar-link" href="cours.html">Voir le cours →</a>
+						</div>
+					</div>
+					
+					<header class="header">
+						<div class="wrap header-inner">
+							<div class="brand">
+								<div class="logo">JN</div>
+								<div>
+									<div class="brand-title">John Nève</div>
+									<div class="brand-subtitle">Cours · INRACI · St-Luc</div>
+								</div>
+							</div>
+							
+							<nav class="menu">
+								<a href="index.html" aria-current="page">Accueil</a>
+								<a href="cours.html">Cours</a>
+								<a href="ressources.html">Ressources</a>
+								<a href="contact.html">Contact</a>
+							</nav>
+						</div>
+					</header>
+					
+					<main>
+						<section class="hero">
+							<div class="wrap hero-inner">
+								<div class="hero-text">
+									<h1>Supports, consignes et ressources de cours</h1>
+									<p class="lead">
+										Tout est centralisé ici : documents PDF, exercices, annonces, et liens utiles.
+									</p>
+									<div class="hero-actions">
+										<a class="btn primary" href="cours.html">Accéder aux cours</a>
+										<a class="btn" href="ressources.html">Outils & ressources</a>
+									</div>
+									<div class="hero-meta">
+										<div class="meta-card">
+											<div class="meta-title">INRACI</div>
+											<div class="meta-text">Accès rapide aux cours et rendus</div>
+											<a class="meta-link" href="cours.html">Ouvrir →</a>
+										</div>
+										<div class="meta-card">
+											<div class="meta-title">St-Luc</div>
+											<div class="meta-text">Supports & consignes par projet</div>
+											<a class="meta-link" href="cours.html">Ouvrir →</a>
+										</div>
+									</div>
+								</div>
+								
+								<aside class="hero-panel">
+									<div class="panel">
+										<div class="panel-title">Actualités / annonces</div>
+										<ul class="panel-list">
+											<li><strong>Annonce 1 :</strong> …</li>
+											<li><strong>Annonce 2 :</strong> …</li>
+											<li><strong>Annonce 3 :</strong> …</li>
+										</ul>
+										<div class="panel-foot">
+											<span class="muted">Mise à jour :</span> <span id="lastUpdate"></span>
+										</div>
+									</div>
+								</aside>
+							</div>
+						</section>
+						
+						<section class="wrap section">
+							<h2>Accès par établissement</h2>
+							<div class="grid-3">
+								<a class="cardlink" href="cours.html">
+									<div class="card">
+										<h3>INRACI</h3>
+										<p>Documents de cours, consignes, planning.</p>
+										<span class="card-cta">Entrer →</span>
+									</div>
+								</a>
+								<a class="cardlink" href="cours.html">
+									<div class="card">
+										<h3>St-Luc</h3>
+										<p>Exercices, projets, ressources associées.</p>
+										<span class="card-cta">Entrer →</span>
+									</div>
+								</a>
+								<a class="cardlink" href="ressources.html">
+									<div class="card">
+										<h3>Outils</h3>
+										<p>Liens utiles, logiciels, références.</p>
+										<span class="card-cta">Voir →</span>
+									</div>
+								</a>
+							</div>
+						</section>
+						
+						<section class="wrap section">
+							<h2>Derniers documents</h2>
+							<div class="grid-2">
+								<div class="doc">
+									<div class="doc-title">Cours 01 — Histogrammes (PDF)</div>
+									<div class="doc-meta">À déposer dans <code>docs/</code></div>
+								</div>
+								<div class="doc">
+									<div class="doc-title">Exercice — Retouche photo</div>
+									<div class="doc-meta">Consignes + rendu</div>
+								</div>
+							</div>
+							<p class="muted small">Astuce : crée un dossier <code>docs/</code> et fais des liens vers tes PDF.</p>
+						</section>
+					</main>
+					
+					<footer class="footer">
+						<div class="wrap footer-inner">
+							<span>© <span id="year"></span> John Nève</span>
+							<span class="muted">Site pédagogique</span>
+						</div>
+					</footer>
+					
+					<script>
+						document.getElementById("year").textContent = new Date().getFullYear();
+						document.getElementById("lastUpdate").textContent = new Date().toLocaleDateString("fr-BE");
+					</script>
+				</body>
+			</html>
