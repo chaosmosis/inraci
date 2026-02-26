@@ -1,6 +1,28 @@
 <!doctype html>
 <html lang="fr">
 	<head>
+				<!-- MathJax (LaTeX dans le navigateur) -->
+		<script>
+			window.MathJax = {
+			tex: {
+			packages: {'[+]': ['ams']},
+			tags: 'ams',               // numérotation automatique possible
+			tagSide: 'right',
+			tagIndent: '0.8em'
+			}
+			};
+		</script>
+		<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+		
+		<style>
+			/* Petite mise en forme “math” */
+			.math-block { margin: 12px 0; }
+			.math-steps details { margin: 10px 0; padding: 10px 12px; border: 1px solid #222a35; border-radius: 12px; background: rgba(255,255,255,.03); }
+			.math-steps summary { cursor: pointer; font-weight: 700; }
+			.math-note { color: #a9b4c3; font-size: 0.95em; }
+			.math-goal { border-left: 4px solid #7aa2ff; padding: 10px 12px; border-radius: 12px; background: rgba(122,162,255,.08); }
+		</style>
+		
 		<meta charset="utf-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<title>UAA11 – Systèmes d’équations linéaires</title>
@@ -44,7 +66,297 @@
 								<li>Développer l’esprit critique face aux solutions obtenues</li>
 							</ul>
 						</section>
+						<section class="card">
+							<h2>Illustration</h2>
+							
+							<p><strong> Un exemple en sciences sociales et humaines : le modèle keynésien d'une économie mondiale</p>
+							
+							<div class="math-block">
+								\begin{align}
+								C &= c_0 + c_1 (Y - T) \tag{1}\\
+								Y &= C + I_0 + G \tag{2}\\
+								G &= T \tag{3}
+								\end{align}
+							</div>
+							
+							<p><em>(1)–(3) constituent le même modèle : seules les formes de lecture changent selon l’unité d’apprentissage.</em></p>
+							
+							<h3>UAA11 — Systèmes linéaires (droites et solutions)</h3>
+							
+							<p><em>On met le modèle sous forme standard, puis on résout : on cherche une solution unique, aucune solution, ou une infinité de solutions.</em></p>
+							
+							<h3>UAA12 — Programmation linéaire (passage aux inégalités)</h3>
+							
+							<p><em>On garde le même cadre, mais au lieu d’égalités strictes, on introduit des contraintes de type “au moins / au plus”.</em></p>
+							
+							<div class="math-block">
+								\begin{align}
+								G &= T \tag{4}\\
+								G &\le G_{\max} \tag{5}\\
+								Y &\ge Y_{\min} \tag{6}
+								\end{align}
+							</div>
+							
+							<p><em>Les équations deviennent des contraintes : on ne cherche plus un point unique, mais une zone admissible, puis on peut optimiser une quantité (par exemple maximiser \(Y\) sous contraintes).</em></p>
+							
+							<h3>UAA13 — Géométrie vectorielle (lecture par coefficients)</h3>
+							
+							<p><em>Chaque équation linéaire s’écrit \(aY + bC + cT + d=0\) : les coefficients \((a,b,c)\) se lisent comme un vecteur qui organise la relation.</em></p>
+							
+							<div class="math-block">
+								\begin{align}
+								-c_1Y + C + c_1T - c_0 &= 0 \tag{7}
+								\end{align}
+							</div>
+							
+							<p><em>On peut comparer deux relations linéaires en comparant leurs vecteurs de coefficients (proportionnalité, parallélisme, etc.).</em></p>
+							
+							<h3>UAA14 — Géométrie dans l’espace (plans et sections)</h3>
+							
+							<p><em>En ajoutant une variable technique supplémentaire (par exemple l’emploi \(N\) ou un indice de prix \(P\)), les relations linéaires deviennent des plans dans l’espace : leur intersection se lit comme une droite ou un point.</em></p>
+							
+							<div class="math-block">
+								\begin{align}
+								Y &= aN + b \tag{8}
+								\end{align}
+							</div>
+							
+							<p><em>On reste dans le même cadre : ce sont toujours des relations linéaires, mais en dimension 3.</em></p>
+							
+							<h3>UAA15 — Nombres complexes (pont par l’algèbre des transformations)</h3>
+							<p><em>Sans changer le modèle, la méthode de résolution peut s’écrire sous forme matricielle. Les transformations successives (pivot) sont des opérations algébriques structurées.</em></p>
+							
+							<div class="math-block">
+								\begin{align}
+								A\mathbf{x}=\mathbf{b} \tag{9}
+								\end{align}
+							</div>
+							
+							<p><em>Cette écriture prépare à des outils algébriques plus avancés (transformations, inverses, etc.).</em></p>
+							
+						</section>
+						<section class="card">
+							<h2>Illustration (version « cours »)</h2>
+							
+							<p><strong>Objectif :</strong> comprendre qu’un système linéaire peut avoir <strong>une</strong> solution, <strong>aucune</strong> solution, ou <strong>une infinité</strong> de solutions, et voir comment cela se lit aussi sur un graphique.</p>
+							
+							<h3>1) Mise en équations (modèle keynésien standard avec budget équilibré)</h3>
+							
+							<p>On part des trois relations :</p>
+							
+							<div class="math-block">
+								\begin{align}
+								C &= c_0 + c_1 (Y - T) \tag{1}\\
+								Y &= C + G \tag{2}\\
+								G &= T \tag{3}
+								\end{align}
+							</div>
+							
+							<p><em>(1)–(3) : on définit trois relations. Mathématiquement, ce sont des égalités du premier degré.</em></p>
+							
+							<p>Pour avoir un exemple numérique clair, on fixe :</p>
+							<div class="math-block">
+								\begin{align}
+								c_0 &= 40,\quad c_1 = 0{,}8,\quad G = 100 \tag{4}
+								\end{align}
+							</div>
+							<p><em>On choisit des valeurs simples pour que les calculs restent lisibles.</em></p>
+							
+							<h3>2) Réduction du système (on garde deux inconnues \(Y\) et \(C\))</h3>
+							
+							<p>Comme \(G=T\), on a directement :</p>
+							<div class="math-block">
+								\begin{align}
+								T = 100 \tag{5}
+								\end{align}
+							</div>
+							<p><em>On remplace donc \(T\) par 100 dans la relation (1).</em></p>
+							
+							<div class="math-block">
+								\begin{align}
+								C &= 40 + 0{,}8(Y - 100) \\
+								&= 40 + 0{,}8Y - 80 \\
+								&= -40 + 0{,}8Y \tag{6}
+								\end{align}
+							</div>
+							
+							<p>Et la relation (2) devient :</p>
+							<div class="math-block">
+								\begin{align}
+								Y = C + 100 \quad \Longleftrightarrow \quad C = Y - 100 \tag{7}
+								\end{align}
+							</div>
+							
+							<p><em>À ce stade, on a bien un système de <strong>deux équations</strong> à <strong>deux inconnues</strong> \(Y\) et \(C\).</em></p>
+							
+							<h3>3) Résolution (méthode « substitution » — comme dans le dossier)</h3>
+							
+							<p><strong>a)</strong> Isoler une inconnue dans une des deux équations (on prend (7)) :</p>
+							<div class="math-block">
+								\begin{align}
+								C = Y - 100 \tag{8}
+								\end{align}
+							</div>
+							<p><em>On a une expression simple de \(C\) en fonction de \(Y\).</em></p>
+							
+							<p><strong>b)</strong> Remplacer \(C\) par son expression dans l’autre équation (on remplace dans (6)) :</p>
+							<div class="math-block">
+								\begin{align}
+								Y - 100 &= -40 + 0{,}8Y \tag{9}
+								\end{align}
+							</div>
+							<p><em>On obtient une équation du premier degré avec une seule inconnue \(Y\).</em></p>
+							
+							<p><strong>c)</strong> Résoudre cette équation :</p>
+							<div class="math-block">
+								\begin{align}
+								Y - 0{,}8Y &= 100 - 40 \\
+								0{,}2Y &= 60 \\
+								Y &= 300 \tag{10}
+								\end{align}
+							</div>
+							<p><em>On isole \(Y\) en regroupant les termes semblables.</em></p>
+							
+							<p><strong>d)</strong> Remplacer \(Y\) dans (8) pour obtenir \(C\) :</p>
+							<div class="math-block">
+								\begin{align}
+								C &= 300 - 100 \\
+								&= 200 \tag{11}
+								\end{align}
+							</div>
+							
+							<p><strong>Solution :</strong></p>
+							<div class="math-block">
+								\begin{align}
+								S = \{(Y;C)\} = \{(300;200)\} \tag{12}
+								\end{align}
+							</div>
+							
+							<p><em>Comme dans le dossier : on écrit l’ensemble \(S\) des solutions. (Ici, une seule solution → système compatible déterminé.)</em></p>
+							
+							<h3>4) Vérification (comme dans le dossier)</h3>
+							<p>On remplace \(Y=300\) et \(C=200\) dans (7) :</p>
+							<div class="math-block">
+								\begin{align}
+								200 \stackrel{?}{=} 300 - 100 \quad \Rightarrow \quad 200 = 200 \;\; \text{(vrai)} \tag{13}
+								\end{align}
+							</div>
+							
+							<p>Et dans (6) :</p>
+							<div class="math-block">
+								\begin{align}
+								200 \stackrel{?}{=} -40 + 0{,}8\cdot 300 \quad \Rightarrow \quad 200 = -40 + 240 = 200 \;\; \text{(vrai)} \tag{14}
+								\end{align}
+							</div>
+							
+							<h3>5) Lecture graphique </h3>
+							
+							<p>Les deux équations (6) et (7) décrivent deux droites dans le plan \((Y,C)\) :</p>
+							<div class="math-block">
+								\begin{align}
+								C &= -40 + 0{,}8Y \tag{15}\\
+								C &= Y - 100 \tag{16}
+								\end{align}
+							</div>
+							<p><em>La solution du système correspond au point d’intersection des deux droites.</em></p>
+							
 						
+									<h3>Lecture du système dans un repère orthonormé</h3>
+								
+								<svg viewBox="0 0 500 500" width="100%" 
+									style="border:1px solid #222a35; border-radius:12px; background:rgba(255,255,255,.02);">
+									
+									<!-- axes -->
+									<line x1="50" y1="450" x2="450" y2="450" stroke="#a9b4c3" stroke-width="2"/>
+										<line x1="50" y1="450" x2="50" y2="50" stroke="#a9b4c3" stroke-width="2"/>
+											
+											<!-- labels -->
+											<text x="460" y="455" fill="#a9b4c3" font-size="14">Y</text>
+											<text x="35" y="60" fill="#a9b4c3" font-size="14">C</text>
+											
+											<!-- graduation -->
+											<text x="45" y="465" fill="#a9b4c3" font-size="12">0</text>
+											<text x="277" y="465" fill="#a9b4c3" font-size="12">300</text>
+											<text x="430" y="465" fill="#a9b4c3" font-size="12">500</text>
+											
+											<text x="20" y="285" fill="#a9b4c3" font-size="12">200</text>
+											<text x="20" y="60" fill="#a9b4c3" font-size="12">500</text>
+											
+											<!-- Droite 1 : C = -40 + 0.8Y -->
+											<!-- Points : (0,-40) hors zone → on commence à Y=50 -->
+											<!-- Pour Y=50 → C=0  ; pour Y=500 → C=360 -->
+											<line x1="90" y1="450" x2="450" y2="162" 
+												stroke="#7aa2ff" stroke-width="3"/>
+												
+												<!-- Droite 2 : C = Y - 100 -->
+												<!-- Pour Y=100 → C=0 ; pour Y=500 → C=400 -->
+												<line x1="130" y1="450" x2="450" y2="130" 
+													stroke="#ff9e64" stroke-width="3"/>
+													
+													<!-- Point solution (300,200) -->
+													<!-- Conversion : x = 50 + (300/500)*400 = 290 -->
+													<!-- y = 450 - (200/500)*400 = 290 -->
+													<circle cx="290" cy="290" r="6" fill="#00d084"/>
+														<text x="300" y="280" fill="#00d084" font-size="14">(300 ; 200)</text>
+														
+													</svg>
+													
+													<p class="math-note">
+														<em>
+															Les deux droites sont sécantes : leur point d’intersection correspond à la solution du système.
+														</em>
+													</p>		<text x="250" y="315" fill="#a9b4c3" font-size="12">300</text>
+										<text x="52" y="140" fill="#a9b4c3" font-size="12">200</text>
+										
+										<!-- Droite C = Y - 100 -->
+										<!-- points: (100,0) et (500,400) mais on clip dans la zone ; ici on trace de Y=60..500 -->
+										<line x1="60" y1="300" x2="500" y2=" -? " stroke="#7aa2ff" stroke-width="2"/>
+										</svg>
+										
+										<p class="math-note"><em>Note : si tu veux, je peux te recalculer et te fournir un SVG parfaitement calibré (échelles + lignes) en fonction de ton repère. Là je t’ai mis le cadre prêt, mais je préfère le faire “au pixel” avec tes valeurs d’échelle.</em></p>
+										
+										<h3>6) Pourquoi « ça dépend de la formulation » ? (3 cas classiques)</h3>
+										
+										<p><strong>Cas A — compatible déterminé</strong> : deux droites sécantes → une seule solution (c’est notre cas).</p>
+										
+										<p><strong>Cas B — impossible (ensemble vide)</strong> : droites parallèles distinctes (même pente, ordonnées à l’origine différentes) :</p>
+										<div class="math-block">
+											\begin{align}
+											C &= Y - 100 \\
+											C &= Y - 120 \tag{17}
+											\end{align}
+										</div>
+										<p><em>Ici, aucune valeur de \((Y,C)\) ne peut vérifier les deux équations : \(S=\varnothing\).</em></p>
+										
+										<p><strong>Cas C — indéterminé</strong> : droites confondues (même équation écrite deux fois) :</p>
+										<div class="math-block">
+											\begin{align}
+											C &= Y - 100 \\
+											2C &= 2Y - 200 \tag{18}
+											\end{align}
+										</div>
+										<p><em>Les deux équations décrivent la même droite : il y a une infinité de solutions (tous les points de la droite).</em></p>
+										
+										<h3>7) Et en 3 inconnues ? (plans, parallélisme, orthogonalité)</h3>
+										
+										<p>Une équation linéaire à 3 inconnues s’écrit :</p>
+										<div class="math-block">
+											\begin{align}
+											aX + bY + cZ = d \tag{19}
+											\end{align}
+										</div>
+										<p><em>Géométriquement, c’est un plan dans l’espace. Deux plans peuvent être parallèles, sécants (intersection = une droite), ou confondus.</em></p>
+										
+										<p>Le vecteur \(\vec{n}=(a,b,c)\) est un vecteur normal au plan :</p>
+										<div class="math-block">
+											\begin{align}
+											\vec{n}_1 \cdot \vec{n}_2 = 0 \quad \Rightarrow \quad \text{plans orthogonaux} \tag{20}
+											\end{align}
+										</div>
+										<p><em>On peut donc discuter « parallélisme / orthogonalité » en lisant les coefficients, comme le dossier introduit l’idée d’équivalence et de structure linéaire.</em></p>
+										
+									
+									</section>
 					</main>
 					
 					<footer class="wrap footer">
