@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<!-- MathJax (LaTeX dans le navigateur) -->
+		<script>
+			window.MathJax = {
+			tex: {
+			packages: {'[+]': ['ams']},
+			tags: 'ams',               // numérotation automatique possible
+			tagSide: 'right',
+			tagIndent: '0.8em'
+			}
+			};
+		</script>
+		<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+		
+		<style>
+			/* Petite mise en forme “math” */
+			.math-block { margin: 12px 0; }
+			.math-steps details { margin: 10px 0; padding: 10px 12px; border: 1px solid #222a35; border-radius: 12px; background: rgba(255,255,255,.03); }
+			.math-steps summary { cursor: pointer; font-weight: 700; }
+			.math-note { color: #a9b4c3; font-size: 0.95em; }
+			.math-goal { border-left: 4px solid #7aa2ff; padding: 10px 12px; border-radius: 12px; background: rgba(122,162,255,.08); }
+		</style>
+		
+		<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<title>UAA11 – Ressource 1 – Système à deux inconnues</title>
+				<link rel="stylesheet" href="style.css" />
+				</head>
+				<body>
+					
+					<header class="wrap">
+						<h1>UAA11 – Ressource 1</h1>
+						<p class="subtitle">Système de deux équations du premier degré à deux inconnues</p>
+						
+						<nav class="nav">
+							<a href="index.html">Accueil</a>
+							<a href="inraci.html">INRACI</a>
+							<a href="uaa11.html">Retour UAA11</a>
+						</nav>
+					</header>
+					
+					<main class="wrap">
+						
+						<section class="card">
+							<h2>Compétence visée</h2>
+							<p>
+								Résoudre un problème se ramenant à un système de deux équations du premier degré à deux inconnues.
+							</p>
+						</section>
+						
+						<section class="card">
+							<h2>Ressource</h2>
+							<ul class="list">
+								<li>Système de deux équations du premier degré à deux inconnues</li>
+								<li>Interprétation géométrique : intersection de deux droites</li>
+								<li>Système déterminé, indéterminé ou impossible</li>
+							</ul>
+						</section>
+						
+						<section class="card">
+							<h2>Processus – Connaître</h2>
+							<ul class="list">
+								<li>Reconnaître un système linéaire à deux inconnues</li>
+								<li>Identifier les coefficients et constantes</li>
+								<li>Reconnaître un système compatible déterminé, indéterminé ou impossible</li>
+								<li>Comprendre l’interprétation graphique (point d’intersection)</li>
+							</ul>
+						</section>
+						
+						<section class="card">
+							<h2>Processus – Appliquer</h2>
+							<ul class="list">
+								<li>Résoudre un système par substitution</li>
+								<li>Résoudre un système par combinaison linéaire</li>
+								<li>Vérifier une solution</li>
+								<li>Résoudre un problème contextualisé (économie, production, répartition)</li>
+							</ul>
+						</section>
+						
+						<section class="card">
+							<h2>Processus – Transférer</h2>
+							<ul class="list">
+								<li>Modéliser une situation concrète par un système</li>
+								<li>Interpréter le résultat dans son contexte</li>
+								<li>Analyser la cohérence d’une solution</li>
+							</ul>
+						</section>
+						
+						<section class="card">
+							<h2>Stratégies transversales</h2>
+							<ul class="list">
+								<li>Utiliser un tableur ou logiciel de calcul formel</li>
+								<li>Mobiliser les notions dans d’autres disciplines (économie, sciences)</li>
+								<li>Développer l’esprit critique face aux résultats numériques</li>
+							</ul>
+						</section>
+						
+						<section class="card">
+							<h2>Documents</h2>
+							<ul class="list">
+								<li><a href="docs/uaa11/UAA11_old.pdf" target="_blank">Dossier UAA11 (PDF)</a></li>
+							</ul>
+						</section>
+						<section class="card">
+							<h2>Exemple — Système 2×2 (revenu \(Y\) et taux \(i\))</h2>
+							
+							<p><strong>Inconnues :</strong> \(x\) et \(y\) (où \(x=Y\), \(y=i\)).</p>
+							<p><strong>Données :</strong> \(c_0=40\), \(c_1=0{,}75\), \(I_0=80\), \(G=100\), \(\alpha=20\), \(i_0=2\), \(\phi=0{,}01\).</p>
+							
+							<div class="math-block">
+								\begin{align}
+								0{,}25x + 20y - 220 &= 0 \tag{1}\\
+								-0{,}01x + y - 2 &= 0 \tag{2}
+								\end{align}
+							</div>
+							
+							<p><em>(1) provient de \(x = (c_0 + c_1x) + (I_0 - \alpha y) + G\) après simplification.  
+									(2) est une relation linéaire liant \(y\) à \(x\).</em></p>
+							
+							<h3>Étape 1</h3>
+							<div class="math-block">
+								\begin{align}
+								y &= 2 + 0{,}01x \tag{3}
+								\end{align}
+							</div>
+							<p><em>On isole \(y\) à partir de (2).</em></p>
+							
+							<h3>Étape 2</h3>
+							<div class="math-block">
+								\begin{align}
+								0{,}25x + 20(2 + 0{,}01x) - 220 &= 0 \\
+								0{,}25x + 40 + 0{,}2x - 220 &= 0 \\
+								0{,}45x - 180 &= 0 \\
+								x &= 400 \tag{4}
+								\end{align}
+							</div>
+							<p><em>On remplace \(y\) par (3) dans (1), puis on isole \(x\).</em></p>
+							
+							<h3>Étape 3</h3>
+							<div class="math-block">
+								\begin{align}
+								y &= 2 + 0{,}01 \times 400 = 6 \tag{5}
+								\end{align}
+							</div>
+							<p><em>On remplace \(x\) dans (3).</em></p>
+							
+							<h3>Solution</h3>
+							<div class="math-block">
+								\begin{align}
+								\boxed{x=400 \quad ; \quad y=6}
+								\end{align}
+							</div>
+							
+							<p class="math-note"><em>Interprétation possible : une hausse de \(x\) se traduit par une hausse de \(y\), ce qui réduit l’investissement via \(I=I_0-\alpha y\).</em></p>
+						</section>
+						
+						
+						
+					</main>
+					
+					<footer class="wrap footer">
+						<p><a href="uaa11.html">← Retour à l’UAA11</a></p>
+					</footer>
+					
+				</body>
+			</html>
