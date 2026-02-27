@@ -61,7 +61,7 @@
 						<section class="card">
 							<h2>Stratégies transversales</h2>
 							<ul class="list">
-								<li>Utiliser l’outil informatique</li>
+								<li><a href="wim.html">Utiliser l’outil informatique</a></li>
 								<li>Mobiliser dans d’autres disciplines les concepts installés</li>
 								<li>Développer l’esprit critique face aux solutions obtenues</li>
 							</ul>
@@ -132,11 +132,11 @@
 								\end{align}
 							</div>
 							
-							<p><em>Cette écriture prépare à des outils algébriques plus avancés (transformations, inverses, etc.).</em></p>
+							<p><em>Cette écriture prépare à des outils algébriques très utile pour des systèmes d'équations linéaires ou non plus adéquat avec les réalités qu'ils sont censées analyser.</em></p>
 							
 						</section>
 						<section class="card">
-							<h2>Illustration </h2>
+							<h2>Illustration à partir d'une situation donné</h2>
 							
 							<p><strong>Objectif :</strong> comprendre qu’un système linéaire peut avoir <strong>une</strong> solution, <strong>aucune</strong> solution, ou <strong>une infinité</strong> de solutions, et voir comment cela se lit aussi sur un graphique.</p>
 							
@@ -369,6 +369,193 @@
 										<p><em>On peut donc discuter « parallélisme / orthogonalité » en lisant les coefficients, comme le dossier introduit l’idée d’équivalence et de structure linéaire.</em></p>
 										
 									
+									</section>
+									<section class="card">
+										<h2>Résoudre un système : substitution, combinaison linéaire, pivot (Gauss) + vérification Python</h2>
+										
+										<p class="math-note">
+											Dans l’UAA 11 (systèmes linéaires), on compare plusieurs méthodes et on mobilise l’outil informatique (p.ex. Python). 
+										</p>
+										
+										<h3>Exemple (système homogène)</h3>
+										<p><strong>Inconnues :</strong> \(Y\) et \(C\). <strong>Paramètre :</strong> \(\beta\).</p>
+										
+										<div class="math-block">
+											\begin{align}
+											\left\{
+											\begin{aligned}
+											Y - C &= 0 \\
+											-\beta Y + C &= 0
+											\end{aligned}
+											\right.
+											\end{align}
+										</div>
+										
+										<p class="math-note">
+											<strong>Idée clé :</strong> on peut transformer un système en un autre système équivalent
+											en appliquant des <em>opérations élémentaires</em> (principes d’équivalence, voir dossier).
+										</p>
+										
+										<details class="math-steps">
+											<summary>Rappel : opérations élémentaires (principe d’addition)</summary>
+											<ul class="list">
+												<li>Ajouter à une équation un multiple d’une autre : \(E_2 \leftarrow E_2 + kE_1\)</li>
+												<li>Permuter deux équations : \(E_1 \leftrightarrow E_2\)</li>
+												<li>Multiplier une équation par un réel non nul : \(E_1 \leftarrow kE_1\), \(k\neq 0\)</li>
+											</ul>
+											<p class="math-note">
+												Ces opérations ne changent pas l’ensemble des solutions : on obtient un système <strong>équivalent</strong>.
+											</p>
+										</details>
+										
+										<h3>1) Méthode par substitution</h3>
+										<p>De (1), on a \(Y=C\). On remplace dans (2) :</p>
+										
+										<div class="math-block">
+											\begin{align}
+											-\beta C + C &= 0 \\
+											(1-\beta)C &= 0 \tag{3}
+											\end{align}
+										</div>
+										
+										<p><strong>Conclusion :</strong></p>
+										<div class="math-block">
+											\begin{align}
+											\beta \neq 1 &\Rightarrow C=0 \Rightarrow Y=0 \\
+											\beta = 1 &\Rightarrow \text{infinité de solutions : } (Y,C)=(t,t)
+											\end{align}
+										</div>
+										
+										<h3>2) Méthode par combinaison linéaire (élimination)</h3>
+										<p>On élimine \(Y\) en faisant : \(E_2 \leftarrow E_2 + \beta E_1\).</p>
+										
+										<div class="math-block">
+											\begin{align}
+											(-\beta Y + C) + \beta(Y - C) &= 0 \\
+											(1-\beta)C &= 0 \tag{4}
+											\end{align}
+										</div>
+										
+										<p class="math-note">
+											On retrouve la même condition que par substitution : normal, c’est la même idée, écrite autrement.
+										</p>
+										
+										<h3>3) Système triangulaire + résolution “en cascade”</h3>
+										<p>
+											Un système est <strong>triangulaire</strong> quand une équation ne contient plus qu’une seule inconnue.
+											Ensuite, on résout <strong>en cascade</strong> : 1 inconnue → puis l’autre.
+										</p>
+										
+										<div class="math-block">
+											\begin{align}
+											\left\{
+											\begin{aligned}
+											Y - C &= 0\\
+											(1-\beta)C &= 0
+											\end{aligned}
+											\right.
+											\end{align}
+										</div>
+										
+										<h3>4) Méthode du pivot (Gauss)</h3>
+										<p>
+											La méthode de Gauss formalise l’élimination par des opérations sur les lignes (pivot).
+										</p>
+										
+										<p><strong>Matrice augmentée :</strong></p>
+										<div class="math-block">
+											\begin{align}
+											\left[
+											\begin{array}{cc|c}
+											1 & -1 & 0 \\
+											-\beta & 1 & 0
+											\end{array}
+											\right]
+											\end{align}
+										</div>
+										
+										<p><strong>Pivot sur la 1ère ligne</strong> : \(L_2 \leftarrow L_2 + \beta L_1\).</p>
+										
+										<div class="math-block">
+											\begin{align}
+											\left[
+											\begin{array}{cc|c}
+											1 & -1 & 0 \\
+											0 & 1-\beta & 0
+											\end{array}
+											\right]
+											\end{align}
+										</div>
+										
+										<p><strong>Cascade</strong> : on lit \( (1-\beta)C=0\), puis on remonte à \(Y=C\).</p>
+										
+										<details class="math-steps">
+											<summary>Lecture “informatique” : pourquoi le cas \(\beta=1\) pose problème ?</summary>
+											<p class="math-note">
+												Si \(\beta=1\), alors \(1-\beta=0\) et la deuxième ligne devient \(0=0\) : 
+												on perd une information → le système n’a plus une solution unique (il devient indéterminé).
+												En langage d’algèbre linéaire : la matrice n’est pas inversible (déterminant nul).
+											</p>
+										</details>
+										
+										<h3>5) Résolution / vérification en Python (outil numérique)</h3>
+										<p class="math-note">
+											Objectif : vérifier un résultat, détecter un cas “solution unique / infinité / impossible”.
+											(Pour un système homogène, “impossible” n’arrive pas : \((0,0)\) est toujours solution.)
+										</p>
+										
+										<h4>a) Avec NumPy (rapide)</h4>
+										<pre><code class="language-python">import numpy as np
+												
+												def solve_system(beta):
+												A = np.array([[1, -1],
+												[-beta, 1]], dtype=float)
+												b = np.array([0, 0], dtype=float)
+												
+												det = np.linalg.det(A)
+												print("det(A) =", det)
+												
+												if abs(det) &lt; 1e-12:
+												print("Matrice singulière → infinité de solutions (ici : Y=C).")
+												return None
+												
+												sol = np.linalg.solve(A, b)
+												Y, C = sol
+												print("Solution unique :", (Y, C))
+												return (Y, C)
+												
+												solve_system(beta=0.8)
+												solve_system(beta=1.0)</code></pre>
+										
+										<h4>b) Avec SymPy (symbolique, “propre” pour \(\beta\))</h4>
+										<pre><code class="language-python">import sympy as sp
+												
+												Y, C, beta = sp.symbols('Y C beta')
+													det = np.linalg.det(A)
+												print("det(A) =", det)
+												
+												if abs(det) &lt; 1e-12:
+												print("Matrice singulière → infinité de solutions (ici : Y=C).")
+												return None
+												
+												sol = np.linalg.solve(A, b)
+												Y, C = sol
+												print("Solution unique :", (Y, C))
+												return (Y, C)
+												
+												solve_system(beta=0.8)
+												solve_system(beta=1.0)
+												eq1 = sp.Eq(Y - C, 0)
+												eq2 = sp.Eq(-beta*Y + C, 0)
+												
+												# Résolution symbolique :
+												sol = sp.solve([eq1, eq2], [Y, C], dict=True)
+												print(sol)</code></pre>
+										
+										<p class="math-note">
+											En classe “informatique”, SymPy est super pour montrer la différence entre une valeur numérique de \(\beta\)
+											et un paramètre symbolique.
+										</p>
 									</section>
 					</main>
 					

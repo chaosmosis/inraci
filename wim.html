@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<script>
+			window.MathJax = {
+			tex: {
+			packages: {'[+]': ['ams']},
+			tags: 'ams',               // numérotation automatique possible
+			tagSide: 'right',
+			tagIndent: '0.8em'
+			}
+			};
+		</script>
+		<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+		
+		<style>
+			/* Petite mise en forme “math” */
+			.math-block { margin: 12px 0; }
+			.math-steps details { margin: 10px 0; padding: 10px 12px; border: 1px solid #222a35; border-radius: 12px; background: rgba(255,255,255,.03); }
+			.math-steps summary { cursor: pointer; font-weight: 700; }
+			.math-note { color: #a9b4c3; font-size: 0.95em; }
+			.math-goal { border-left: 4px solid #7aa2ff; padding: 10px 12px; border-radius: 12px; background: rgba(122,162,255,.08); }
+		</style>
+		
+		<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<title>UAA11 – Ressource 3 – Méthode de Gauss</title>
+				<link rel="stylesheet" href="style.css" />
+				</head>
+				<body>
+					
+					<header class="wrap">
+						<h1>UAA11 – WIM</h1>
+						<p class="subtitle">Méthode de Gauss</p>
+						
+						<nav class="nav">
+							<a href="index.html">Accueil</a>
+							<a href="inraci.html">INRACI</a>
+							<a href="uaa11.html">Retour UAA11</a>
+						</nav>
+					</header>
+					
+					<main class="wrap">
+						
+						<section class="card">
+							<h2>Compétence visée</h2>
+							<p>
+								Résoudre un système d’équations linéaires à l’aide d'un outil numérique.
+							</p>
+							<p>👉 <a href="https://wims.univ-cotedazur.fr/wims/fr_tool~linear~linsolver.fr.html" target="_blank">Ouvre WIMS (outil interactif)</a></p>
+						</section>
+						<section class="card">
+							<h2>Utiliser WIMS pour résoudre les systèmes linéaires</h2>
+							
+							<p>Le site <a href="https://wims.univ-cotedazur.fr/wims/fr_tool~linear~linsolver.fr.html" target="_blank">WIMS</a> est un outil interactif qui permet de vérifier et d'explorer des systèmes linéaires vues dans ce cours. Il est particulièrement utile pour :
+							</p>
+							<ul class="list">
+								<li>Vérifier une solution trouvée à la main</li>
+								<li>Tester différentes méthodes de résolution</li>
+								<li>Observer des cas particuliers (solutions, aucune solution, infinité de solutions)</li>
+								<li>Visualiser des graphiques liés aux équations</li>
+							</ul>
+							
+								<p>Je te propose ci-dessous les différentes étapes pour vérifier notre solution de l'illustration de ce que nous avons appélé une "économie homogène". </p>
+							
+							<ul class="list">
+							<li>Étape 1 — Ouvrir la solveuse</li>
+									<p>On arrive sur la page « Solveuse linéaire ».</p>
+									
+									<figure>
+										<img src="docs/wim/wim_1.png" alt="WIMS – page solveuse" class="img">
+											<figcaption><em>wim_1 — Page d’accueil (choix de la méthode et zone de saisie).</em></figcaption>
+										</figure>
+										
+							<li>Étape 2 — Choisir la méthode intégrale</li>
+							<p>On reste en <strong>méthode intégrale</strong> et on écrit une équation par ligne.</p>
+							
+							<figure>
+								<img src="docs/wim/wim_2.png" alt="WIMS – saisie du système" class="img">
+									<figcaption><em>wim_2 — Saisie : une équation par ligne.</em></figcaption>
+								</figure>
+							<li>Étape 3 — Lancer le calcul et lire le résultat</li>
+								<p>On clique sur <strong>Résoudre le système</strong> puis on lit la conclusion (solution unique / aucune / infinité).</p>
+							
+							<figure>
+								<img src="docs/wim/wim_3.png" alt="WIMS – résultat" class="img">
+									<figcaption><em>wim_3 — Résultat : type de solution et valeurs (ou paramétrage).</em></figcaption>
+								</figure>
+							</ul>
+						
+							
+							<h3>Quelques conseils pour bien utiliser WIMS</h3>
+							
+							<ul>
+								<li>Sois attentif à la **syntaxe** : les inconnues doivent être clairement nommées (ex : Y, C, T).</li>
+								<li>Si tu as des problèmes avec les parenthèses, vérifie que l’expression est correcte (une parenthèse fermante pour chaque ouvrante).</li>
+								<li>Commence toujours par un petit cas simple : 2×2 avant de passer à 3×3.</li>
+								<li>Utilise la sortie graphique quand elle est disponible : cela te permet de visualiser les solutions.</li>
+							</ul>
+							
+						</section>
+						
+					
+							
+						</main>
+						
+						<footer class="wrap footer">
+							<p><a href="uaa11.html">← Retour à l’UAA11</a></p>
+						</footer>
+						
+					</body>
+				</html>

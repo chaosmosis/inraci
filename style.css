@@ -136,3 +136,21 @@ code{color:#c7d2fe}
 
 .footer{border-top:1px solid var(--line); margin-top:18px}
 .footer-inner{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+
+figure {
+  margin: 16px 0;
+}
+
+img.img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #222a35;
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
