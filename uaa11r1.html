@@ -104,18 +104,13 @@
 							</ul>
 						</section>
 						<section class="card">
-					
-								<section class="card">
-									<h3>Résoudre des systèmes</h3>
-									
-									<p class="math-note">
-										Dans l’UAA 11 (systèmes linéaires), on compare plusieurs méthodes et on mobilise l’outil informatique. 
-									</p>les
-								<section class="card">
-									<h3>Une économie homogène</h3>
-									<p><strong>Inconnues :</strong> \(Y\) et \(C\). 
-									<strong>Paramètre :</strong> \(\beta\).</p>
-									
+							<h2>Illustrations</h2>
+								<p class="math-note"> Dans l’UAA 11 (systèmes linéaires), on compare plusieurs méthodes et on mobilise l’outil informatique. 
+									</p>
+										</section>
+						<section class="card">
+								<h2>1.) Une économie homogène</h2>
+								
 									<div class="math-block">
 										\begin{align}
 										\left\{
@@ -126,6 +121,9 @@
 										\right.
 										\end{align}
 									</div>
+									
+									<p><strong>Inconnues :</strong> \(Y\) et \(C\). 
+										<strong>Paramètre :</strong> \(\beta\).</p>
 									
 									<p class="math-note">
 										<strong>Idée clé :</strong> on peut transformer un système en un autre système équivalent
@@ -175,172 +173,17 @@
 									<p class="math-note">
 										On retrouve la même condition que par substitution : normal, c’est la même idée, écrite autrement.
 									</p>
-									
-									<h3>3) Système triangulaire + résolution “en cascade”</h3>
-									<p>
-										Un système est <strong>triangulaire</strong> quand une équation ne contient plus qu’une seule inconnue.
-										Ensuite, on résout <strong>en cascade</strong> : 1 inconnue → puis l’autre.
-									</p>
-									
-									<div class="math-block">
-										\begin{align}
-										\left\{
-										\begin{aligned}
-										Y - C &= 0\\
-										(1-\beta)C &= 0
-										\end{aligned}
-										\right.
-										\end{align}
-									</div>
-									
-									<h3>4) Méthode du pivot (Gauss)</h3>
-									<p>
-										La méthode de Gauss formalise l’élimination par des opérations sur les lignes (pivot).
-									</p>
-									
-									<p><strong>Matrice augmentée :</strong></p>
-									<div class="math-block">
-										\begin{align}
-										\left[
-										\begin{array}{cc|c}
-										1 & -1 & 0 \\
-										-\beta & 1 & 0
-										\end{array}
-										\right]
-										\end{align}
-									</div>
-									
-									<p><strong>Pivot sur la 1ère ligne</strong> : \(L_2 \leftarrow L_2 + \beta L_1\).</p>
-									
-									<div class="math-block">
-										\begin{align}
-										\left[
-										\begin{array}{cc|c}
-										1 & -1 & 0 \\
-										0 & 1-\beta & 0
-										\end{array}
-										\right]
-										\end{align}
-									</div>
-									
-									<p><strong>Cascade</strong> : on lit \( (1-\beta)C=0\), puis on remonte à \(Y=C\).</p>
-									
-									<details class="math-steps">
-										<summary>Lecture “informatique” : pourquoi le cas \(\beta=1\) pose problème ?</summary>
-										<p class="math-note">
-											Si \(\beta=1\), alors \(1-\beta=0\) et la deuxième ligne devient \(0=0\) : 
-											on perd une information → le système n’a plus une solution unique (il devient indéterminé).
-											En langage d’algèbre linéaire : la matrice n’est pas inversible (déterminant nul).
-										</p>
-									</details>
-									
-									<h3>5) Résolution / vérification en Python (outil numérique)</h3>
-									<p class="math-note">
-										Objectif : vérifier un résultat, détecter un cas “solution unique / infinité / impossible”.
-										(Pour un système homogène, “impossible” n’arrive pas : \((0,0)\) est toujours solution.)
-									</p>
-									
-									<h4>a) Avec NumPy (rapide)</h4>
-									<pre><code class="language-python">import numpy as np
-											
-											def solve_system(beta):
-											A = np.array([[1, -1],
-											[-beta, 1]], dtype=float)
-											b = np.array([0, 0], dtype=float)
-											
-											det = np.linalg.det(A)
-											print("det(A) =", det)
-											
-											if abs(det) &lt; 1e-12:
-											print("Matrice singulière → infinité de solutions (ici : Y=C).")
-											return None
-											
-											sol = np.linalg.solve(A, b)
-											Y, C = sol
-											print("Solution unique :", (Y, C))
-											return (Y, C)
-											
-											solve_system(beta=0.8)
-											solve_system(beta=1.0)</code></pre>
-									
-									<h4>b) Avec SymPy (symbolique, “propre” pour \(\beta\))</h4>
-									<pre><code class="language-python">import sympy as sp
-											
-											Y, C, beta = sp.symbols('Y C beta')
-											
-											eq1 = sp.Eq(Y - C, 0)
-											eq2 = sp.Eq(-beta*Y + C, 0)
-											
-											# Résolution symbolique :
-											sol = sp.solve([eq1, eq2], [Y, C], dict=True)
-											print(sol)</code></pre>
-									
-									<p class="math-note">
-										En classe “informatique”, SymPy est super pour montrer la différence entre une valeur numérique de \(\beta\)
-										et un paramètre symbolique.
-									</p>
 								</section>
 								
-							<h3> 1.) Modèle néo-keynesien (revenu \(Y\) et taux \(i\))</h3>
-							
-							<p><strong>Inconnues :</strong> \(x\) et \(y\) (où \(x=Y\), \(y=i\)).</p>
-							<p><strong>Données :</strong> \(c_0=40\), \(c_1=0{,}75\), \(I_0=80\), \(G=100\), \(\alpha=20\), \(i_0=2\), \(\phi=0{,}01\).</p>
-							
-							<div class="math-block">
-								\begin{align}
-								0{,}25x + 20y - 220 &= 0 \tag{1}\\
-								-0{,}01x + y - 2 &= 0 \tag{2}
-								\end{align}
-							</div>
-							
-							<p><em>(1) provient de \(x = (c_0 + c_1x) + (I_0 - \alpha y) + G\) après simplification.  
-									(2) est une relation linéaire liant \(y\) à \(x\).</em></p>
-							
-							<h3>Étape 1</h3>
-							<div class="math-block">
-								\begin{align}
-								y &= 2 + 0{,}01x \tag{3}
-								\end{align}
-							</div>
-							<p><em>On isole \(y\) à partir de (2).</em></p>
-							
-							<h3>Étape 2</h3>
-							<div class="math-block">
-								\begin{align}
-								0{,}25x + 20(2 + 0{,}01x) - 220 &= 0 \\
-								0{,}25x + 40 + 0{,}2x - 220 &= 0 \\
-								0{,}45x - 180 &= 0 \\
-								x &= 400 \tag{4}
-								\end{align}
-							</div>
-							<p><em>On remplace \(y\) par (3) dans (1), puis on isole \(x\).</em></p>
-							
-							<h3>Étape 3</h3>
-							<div class="math-block">
-								\begin{align}
-								y &= 2 + 0{,}01 \times 400 = 6 \tag{5}
-								\end{align}
-							</div>
-							<p><em>On remplace \(x\) dans (3).</em></p>
-							
-							<h3>Solution</h3>
-							<div class="math-block">
-								\begin{align}
-								\boxed{x=400 \quad ; \quad y=6}
-								\end{align}
-							</div>
-							
-							<p class="math-note"><em>Interprétation possible : une hausse de \(x\) se traduit par une hausse de \(y\), ce qui réduit l’investissement via \(I=I_0-\alpha y\).</em></p>
-						</section>
+									
+						<section class="card">
+							<h2> 2.) Modèle keynésien classique</h2>
 						
+								<p><em> Les économistes en herbe définissent généralement deux relations pour décrire une économie mondiale. Mathématiquement, ce sont des égalités (1)–(2). On dira qu'elles forment ensemble un "système d'équations", c'est à dire, "un ensemble d'équations qui doivent être vérifiées simultanement". (Voy. Actimath 6 4, pg. 13)	</em></p>
 						
+								<p><strong>Objectif :</strong> comprendre qu’un système linéaire peut avoir <strong>une</strong> solution, <strong>aucune</strong> solution, ou <strong>une infinité</strong> de solutions, et voir comment cela se lit aussi sur un graphique.</p>
 						
-						
-					
-						<h3>2) Modèle keynésien classique</h3>
-							<p><strong>Objectif :</strong> comprendre qu’un système linéaire peut avoir <strong>une</strong> solution, <strong>aucune</strong> solution, ou <strong>une infinité</strong> de solutions, et voir comment cela se lit aussi sur un graphique.</p>
-						
-						<p>On part des trois relations :</p>
+								<p>On part des trois relations :</p>
 			
 						
 						<div class="math-block">
@@ -354,10 +197,7 @@
 							\right.
 							\end{align}
 						</div>
-					
-						
-						<p><em> Les économistes en herbe définissent généralement deux relations pour décrire une économie mondiale. Mathématiquement, ce sont des égalités (1)–(2). On dira qu'elles forment ensemble un "système d'équations", c'est à dire, "un ensemble d'équations qui doivent être vérifiées simultanement". (Voy. Actimath 6 4, pg. 13)
-						
+			
 						<p>Dans un souci pédagogique, iels fixent des paraèmetres et des variables :</p>
 						<div class="math-block">
 							\begin{align}
@@ -403,7 +243,7 @@
 						\end{align}
 						</div>
 						
-					<p><em>Notons par ailleurs que ce système de <strong>deux équations</strong> à <strong>deux inconnues</strong> ()\(Y\) et \(C\)), vous l'avez peut-être déjà résolu alors qu'il s'écrivait de la manière suivante : </em></p>
+					<p><em> Petite question bonus : l'un de mes ancien élèves m'a affirmé que ce système de <strong>deux équations</strong> à <strong>deux inconnues</strong> ()\(Y\) et \(C\))  est équivalent a un probème déjà résolu par lui.  </em></p>
 					
 						<div class="math-block">
 						\begin{align}
@@ -415,10 +255,11 @@
 						\right.
 						\end{align}
 					</div>
-				
-				
+					
+					<p><em> comment raisonne-t-il pour tenir une telle proposition ? </em></p>
+		
 						
-						<h3> via la méthode dite de « substitution »</h3>
+						<h3> Résolution via la méthode dite de « substitution »</h3>
 						
 						<p><strong>I. </strong> Isoler une inconnue dans une des deux équations (on prend (7)) :</p>
 						<div class="math-block">
@@ -478,7 +319,7 @@
 							\end{align}
 						</div>
 						
-						<h3>5) Lecture graphique </h3>
+						<h3>Lecture graphique </h3>
 						
 						<p>Les deux équations (6) et (7) décrivent deux droites dans le plan \((Y,C)\) :</p>
 						<div class="math-block">
